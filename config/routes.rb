@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  root 'home#index'
+
+  resource :orders, only: [:new, :create] do
+    get 'success'
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
