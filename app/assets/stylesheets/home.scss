@@ -6,6 +6,49 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body{
+  margin-top: 40px;
+}
+
+body:before{
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-image: image-url("background.jpg");
+  background-size: cover;
+  background-position: center, center;
+
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+
+
+.container{
+  min-height: 100%;
+  background-color: rgba(255,255,255, 0.90);
+}
+
 .field_with_errors{
   @extend .has-error
+}
+
+.btn-purple{
+  background-color: #7e2392;
+  &:hover{
+    background-color: #ae3fbe;
+  }
+}
+
+.purple{
+  background-color: #7e2392;
 }

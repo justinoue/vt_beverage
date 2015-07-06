@@ -13,10 +13,10 @@ channel.bind('ordered', function(data){
 
 channel.bind('who', function(data){
   console.log(data);
-  $('#who-ordered').prepend(
-    '<li class="list-group-item">'+data.first_name+' from '+data.city+', '+data.state+' just ordered '+data.quantity+'!</li>'
-  );
   $('#who-ordered li').last().fadeOut(400, function(){
+    $('#who-ordered').prepend(
+      '<li class="list-group-item">'+data.first_name+' from '+data.city+', '+data.state+' just ordered '+data.quantity+'!</li>'
+    );
     this.remove();
   });
 });
