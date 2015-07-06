@@ -46,5 +46,6 @@ group :development, :test do
   gem 'spring'
 
   gem 'awesome_print'
+  gem 'faker'
 end
 
