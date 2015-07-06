@@ -14,14 +14,14 @@
 ActiveRecord::Schema.define(version: 20150706142826) do
 
   create_table "orders", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "street"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zipcode"
-    t.string   "quantity"
-    t.string   "stripe_token"
+    t.string   "first_name",   limit: 255
+    t.string   "last_name",    limit: 255
+    t.string   "street",       limit: 255
+    t.string   "city",         limit: 255
+    t.string   "state",        limit: 255
+    t.string   "zipcode",      limit: 255
+    t.string   "quantity",     limit: 255
+    t.string   "stripe_token", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "shipped"

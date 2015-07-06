@@ -13,10 +13,16 @@
     </div>
     <div class="panel-body">
       <ul id="who-ordered" class="list-group">
-        <% @orders.each do |o| %>
-          <li class="list-group-item">
-            <%= o.first_name %> from <%= o.city %>, <%= o.state %> just ordered <%= o.quantity %>!
-          </li>
+        <% unless @orders.empty? %>
+          <% @orders.each do |o| %>
+            <li class="list-group-item">
+              <%= o.first_name %> from <%= o.city %>, <%= o.state %> just ordered <%= o.quantity %>!
+            </li>
+          <% end %>
+        <% else %>
+          <li class="list-group-item hidden"></li>
+          <li class="list-group-item hidden"></li>
+          <li class="list-group-item hidden"></li>
         <% end %>
       </ul>
     </div>

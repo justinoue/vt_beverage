@@ -4,6 +4,6 @@ class HomeController < ApplicationController
       ordered: Order.quantity_ordered,
       shipped: Order.quantity_shipped
     }
-    @orders = Order.order(created_at: :desc).limit(2)
+    @orders = Order.order(created_at: :desc).limit(3)
   end
 end
