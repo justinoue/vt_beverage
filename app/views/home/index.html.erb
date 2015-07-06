@@ -1,40 +1,45 @@
-<div class="container">
-  <div class="page-header">
-    <h1>Purple Drank!</h1>
-  </div>
-  <p>Click <%= link_to 'here', new_orders_path %> to buy the hottest new beverage.</p>
+<center>
+<p>Purple Drank is the hottest new beverage that is sweeping the nation.</p>
+<p>You have arrived at Purple Drank HQ, the only legal way to obtain Purple Drank.</p>
+<p><%= link_to 'I want to get my drank on.', new_orders_path, class: "btn btn-info" %></p>
+</center>
 
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Gettin they drank on</h3>
-      </div>
-      <div class="panel-body">
-        person
-      </div>
+<hr>
+
+<div class="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Gettin they drank on</h3>
+    </div>
+    <div class="panel-body">
+      <ul id="who-ordered" class="list-group">
+        <% @orders.each do |o| %>
+          <li class="list-group-item">
+            <%= o.first_name %> from <%= o.city %>, <%= o.state %> just ordered <%= o.quantity %>!
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
+</div>
 
-  <div class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Dranks Sold</h3>
-      </div>
-      <div class="panel-body">
-        <%= @quantity[:ordered] %>
-      </div>
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Dranks Sold</h3>
+    </div>
+    <div class="panel-body">
+      <span id="ordered-count"><%= @quantity[:ordered] %></span>
     </div>
   </div>
-  <div class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Dranks Shipped</h3>
-      </div>
-      <div class="panel-body">
-        <%= @quantity[:shipped] %>
-      </div>
+</div>
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Dranks Shipped</h3>
+    </div>
+    <div class="panel-body">
+      <span id="shipped-count"><%= @quantity[:shipped] %></span>
     </div>
   </div>
-
-  
 </div>

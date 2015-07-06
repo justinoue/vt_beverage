@@ -1,3 +1,4 @@
+require 'pusher'
 class Order < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :street, :city, :state, :zipcode, :quantity
 
@@ -5,7 +6,7 @@ class Order < ActiveRecord::Base
 
   scope :shipped,-> {where(shipped: true)}
 
-  after_create :pusher_order
+  after_create :pusher_order, :pusher_who
 
   def ship!
     self.shipped = true
@@ -26,17 +27,26 @@ class Order < ActiveRecord::Base
   end
 
   private
+    def pusher_who
+      Pusher['orders'].trigger('who', {
+        first_name: self.first_name,
+        quantity: self.quantity,
+        city: self.city,
+        state: self.state
+      })
+    end
+
     def pusher_ship
       quantity_shipped = Order.quantity_shipped
       Pusher['orders'].trigger('shipped', {
-        message: "Shipped: #{quantity_shipped}"
+        message: quantity_shipped
       })
     end
 
     def pusher_order
       quantity_ordered = Order.quantity_ordered
       Pusher['orders'].trigger('ordered', {
-        message: "Ordered: #{quantity_ordered}"
+        message: quantity_ordered
       })
     end
 end
